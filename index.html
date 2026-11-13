@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joes Francy Reeba S · Machine learning engineer</title>
+<meta name="description" content="Machine learning engineer working on reinforcement learning, computer vision and generative AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e9eef3; --surface:#f6f9fb; --ink:#10243a; --muted:#51647a; --line:#c5d0db;
+  --blue:#2447f5; --mint:#00946b; --bg2:#dbe3ec;
+  --b1:#5b74c9; --b2:#3a9a82; --b3:#c0924a; --b4:#9a6a8c; --page:#fbfdff; --glow:rgba(255,214,140,.55);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0f1b2a;--surface:#15263a;--ink:#e8eef5;--muted:#9fb0c3;--line:#2a3d54;--blue:#7d97ff;--mint:#3ddba9;--bg2:#09131f;--b1:#5f78d8;--b2:#3fb592;--b3:#d6a757;--b4:#b4789f;--page:#dfe8f2;--glow:rgba(255,196,110,.28);color-scheme:dark}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font:400 1.0625rem/1.65 "IBM Plex Sans",system-ui,sans-serif;
+  background:radial-gradient(60rem 40rem at 85% -5%,var(--glow),transparent 60%),linear-gradient(180deg,var(--bg),var(--bg2));background-attachment:fixed}
+#library{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
+#library .item{position:absolute;bottom:-160px;opacity:0;animation:rise linear infinite}
+.book{border-radius:3px 5px 5px 3px;box-shadow:inset -3px 0 0 rgba(0,0,0,.18),inset 3px 0 0 rgba(255,255,255,.25)}
+.book::before,.book::after{content:"";position:absolute;left:0;right:0;height:5px;background:rgba(255,255,255,.55)}
+.book::before{top:14%}.book::after{bottom:14%}
+.sheet{background:var(--page);border-radius:2px;box-shadow:0 1px 4px rgba(0,0,0,.15);
+  background-image:repeating-linear-gradient(transparent 0 8px,rgba(36,71,245,.22) 8px 9px);background-position:0 12px}
+.dust{border-radius:50%;background:var(--glow);filter:blur(1px)}
+@keyframes rise{
+  0%{transform:translateY(0) rotate(var(--r0));opacity:0}
+  10%{opacity:var(--o)}
+  90%{opacity:var(--o)}
+  100%{transform:translateY(-120vh) rotate(var(--r1));opacity:0}
+}
+a{color:var(--blue);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:2px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.5rem}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;margin:0;line-height:1.05}
+nav{display:flex;gap:1.5rem;flex-wrap:wrap;padding:1.5rem 0;font-weight:500}
+nav a{color:var(--ink);text-decoration:none;border-bottom:2px solid transparent}
+nav a:hover{border-color:var(--blue)}
+nav .name{margin-right:auto;font-family:"Bricolage Grotesque",sans-serif;font-weight:800}
+
+/* hero */
+.hero{padding:3.5rem 0 2rem}
+.hero h1{font-size:clamp(3rem,10vw,7rem);font-weight:800;letter-spacing:-.03em;max-width:12ch}
+.hero p.lead{font-size:clamp(1.15rem,2.4vw,1.5rem);max-width:34ch;margin:1.5rem 0 0;color:var(--muted)}
+.curve{margin-top:2.5rem;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:1rem 1rem .5rem}
+.curve svg{width:100%;height:auto;display:block}
+.curve figcaption{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;color:var(--muted);font-size:.9rem;padding:.25rem .25rem .5rem}
+.loss{fill:none;stroke:var(--blue);stroke-width:2.5;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 3s ease-out .3s forwards}
+.noise{fill:none;stroke:var(--blue);stroke-width:1;opacity:.35;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 3s ease-out .3s forwards}
+.reward{fill:none;stroke:var(--mint);stroke-width:2.5;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 3s ease-out .8s forwards}
+.axis{stroke:var(--line);stroke-width:1}
+.tick{fill:var(--muted);font:12px "IBM Plex Sans",sans-serif}
+@keyframes draw{to{stroke-dashoffset:0}}
+.legend i{display:inline-block;width:.9rem;height:3px;vertical-align:middle;margin-right:.4rem}
+
+.cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2rem}
+.btn{display:inline-block;padding:.7rem 1.2rem;border-radius:4px;font-weight:500;text-decoration:none;border:2px solid var(--ink);color:var(--ink)}
+.btn.main{background:var(--ink);color:var(--bg)}
+.btn:hover{border-color:var(--blue)}
+.btn.main:hover{background:var(--blue);color:#fff}
+
+section{padding:4rem 0 1rem}
+section>.wrap>h2{font-size:clamp(1.9rem,4vw,2.75rem);font-weight:800;letter-spacing:-.02em;margin-bottom:1.5rem}
+.row{background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(3px);display:grid;grid-template-columns:12rem 1fr;gap:1rem 2rem;padding:1.4rem 0;border-top:1px solid var(--line)}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row .when{color:var(--muted);font-size:.95rem}
+.row h3{font-size:1.35rem;font-weight:500;margin-bottom:.4rem}
+.row p{margin:.25rem 0;max-width:60ch}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem;padding:0;list-style:none}
+.tags li{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:.1rem .7rem;font-size:.875rem}
+.status{color:var(--mint);font-weight:500}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.5rem 2rem}
+.skills h3{font-size:1.1rem;font-weight:500;margin-bottom:.4rem}
+.skills p{margin:0;color:var(--muted)}
+ul.plain{margin:0;padding-left:1.1rem}
+ul.plain li{margin:.45rem 0;max-width:62ch}
+footer{padding:4rem 0 3rem;margin-top:3rem;border-top:1px solid var(--line)}
+footer h2{font-size:clamp(2rem,6vw,3.5rem);font-weight:800;letter-spacing:-.02em;max-width:16ch}
+footer p{margin:1rem 0 0;color:var(--muted)}
+footer .links{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.5rem;font-weight:500}
+@media (max-width:640px){.row{grid-template-columns:1fr;gap:.2rem}}
+@media (prefers-reduced-motion:reduce){
+  .loss,.noise,.reward{animation:none;stroke-dashoffset:0}
+  html{scroll-behavior:auto}
+  #library .item{animation:none;opacity:var(--o);bottom:auto}
+}
+</style>
+</head>
+<body>
+<div id="library" aria-hidden="true"></div>
+<div class="wrap">
+  <nav aria-label="Main">
+    <span class="name">Joes Francy Reeba S</span>
+    <a href="#work">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#writing">Publication</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header class="hero">
+    <h1>Joes Francy Reeba S</h1>
+    <p class="lead">Machine learning engineer. I build reinforcement learning, computer vision and generative AI systems, and test them until they hold up.</p>
+
+    <figure class="curve" aria-label="Illustration: a training loss curve falling while reward rises over time">
+      <svg viewBox="0 0 800 260" role="img" aria-hidden="true">
+        <line class="axis" x1="40" y1="220" x2="780" y2="220"/>
+        <line class="axis" x1="40" y1="20" x2="40" y2="220"/>
+        <path class="noise" pathLength="1" d="M40 40 L70 70 L100 52 L130 98 L160 80 L190 118 L220 100 L250 132 L280 120 L310 148 L340 136 L370 160 L400 150 L430 170 L460 160 L490 178 L520 170 L550 184 L580 176 L610 188 L640 183 L670 192 L700 188 L730 195 L780 192"/>
+        <path class="loss" pathLength="1" d="M40 45 C120 70 160 110 240 130 S400 168 520 178 S700 192 780 194"/>
+        <path class="reward" pathLength="1" d="M40 200 C140 190 200 150 300 110 S520 60 620 52 S740 44 780 42"/>
+        <text class="tick" x="40" y="242">training steps</text>
+      </svg>
+      <figcaption>
+        <span>Learning is mostly a curve you keep checking.</span>
+        <span class="legend"><i style="background:var(--blue)"></i>loss <i style="background:var(--mint);margin-left:.8rem"></i>reward</span>
+      </figcaption>
+    </figure>
+
+    <div class="cta">
+      <a class="btn main" href="#projects">See projects</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+  </header>
+</div>
+
+<section id="work"><div class="wrap">
+  <h2>Experience</h2>
+  <div class="row">
+    <div class="when">Sep 2026 to now</div>
+    <div>
+      <h3>Data science intern, MATT Engineering Solutions</h3>
+      <p>Full-time, on-site. I work on research-oriented AI and machine learning projects: literature review, problem formulation, model development, experiments and evaluation.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="when">Sep to Oct 2026</div>
+    <div>
+      <h3>Research intern, IIIT Naya Raipur</h3>
+      <p>Remote. I built a CARLA simulation of cooperative highway merging with camera perception and multiple agents. Counterfactual replays showed that one vehicle’s decision could have prevented every crash we reproduced.</p>
+      <ul class="tags"><li>CARLA</li><li>Multi-agent RL</li><li>V2V communication</li></ul>
+      <p><a href="https://github.com/Joes017">Code on GitHub</a></p>
+    </div>
+  </div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+  <h2>Projects</h2>
+  <div class="row">
+    <div class="when status">Ongoing</div>
+    <div>
+      <h3>Lifelong learning for text-to-image generation</h3>
+      <p>Investigating how to reduce catastrophic forgetting in text-to-image models, using Vision Transformers with diffusion-based architectures.</p>
+      <ul class="tags"><li>Vision Transformers</li><li>Diffusion models</li><li>Lifelong learning</li></ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="when">First place, national symposium</div>
+    <div>
+      <h3>Optimizing RLHF with dynamic KL regularization</h3>
+      <p>A KL-regularized RLHF simulation with a Bradley-Terry reward model and softmax policy. A dynamic controller adapts β without manual tuning, and a memory-augmented feedback buffer reuses past feedback. Compared against fixed-β baselines over 10 seeds.</p>
+      <ul class="tags"><li>Python</li><li>NumPy</li><li>Matplotlib</li></ul>
+      <p><a href="https://github.com/Joes017">Code on GitHub</a></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="when">Computer vision</div>
+    <div>
+      <h3>Face recognition attendance system</h3>
+      <p>A real-time OpenCV pipeline that detects and matches faces, then logs attendance to a CSV file automatically.</p>
+      <ul class="tags"><li>Python</li><li>OpenCV</li><li>NumPy</li></ul>
+      <p><a href="https://github.com/Joes017">Code on GitHub</a></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="when">Classical ML</div>
+    <div>
+      <h3>Heart disease prediction</h3>
+      <p>Compared logistic regression, decision tree and random forest classifiers with feature engineering and k-fold validation. Reached 85% accuracy.</p>
+      <p><a href="https://github.com/Joes017">Code on GitHub</a></p>
+    </div>
+  </div>
+</div></section>
+
+<section id="writing"><div class="wrap">
+  <h2>Publication</h2>
+  <div class="row">
+    <div class="when status">In preparation</div>
+    <div>
+      <h3>Why do cooperative driving policies fail to coordinate? A counterfactual analysis of highway merging</h3>
+      <p>Manuscript for the CALM-27 Workshop on Causality, Agents and Large Models (with ANT-27, Delft). With Fathima P. R., Gowtham Marella, Alaa Daoud and Srinivasa K G.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+  <h2>Skills and background</h2>
+  <div class="skills">
+    <div><h3>Machine learning</h3><p>ML algorithms, reinforcement learning (RLHF), Scikit-learn</p></div>
+    <div><h3>Deep learning</h3><p>Neural networks, computer vision, Vision Transformers, diffusion models, PyTorch, TensorFlow</p></div>
+    <div><h3>Languages and data</h3><p>Python, SQL, NumPy, Pandas, Matplotlib</p></div>
+    <div><h3>Tools</h3><p>Google Colab, GitHub, Qiskit</p></div>
+  </div>
+  <div class="row" style="margin-top:2.5rem">
+    <div class="when">Education</div>
+    <div>
+      <h3>B.Tech in Computer Science and Engineering (AI and ML)</h3>
+      <p>Joy University, Tirunelveli. 2023 to present. CGPA 9.2.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="when">Achievements</div>
+    <div>
+      <ul class="plain">
+        <li>First place, national symposium at Arunachala College, for “Optimizing RLHF with Dynamic KL Regularization”</li>
+        <li>First place, national symposium at Rohini College, for “Decoding India’s Startup Growth and Investor Landscape”</li>
+        <li>First place, JOYXOR Hackathon (ACM Student Chapter)</li>
+        <li>Runner-up, ProInovex Hackathon (LearnerPro)</li>
+        <li>Participant, Code2Create 6.0 Hackathon, VIT Vellore</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="when">Courses and workshops</div>
+    <div>
+      <ul class="plain">
+        <li>Mathematical Foundation for Data Science and Machine Learning, summer school, IIIT Naya Raipur</li>
+        <li>Quantum Computing course, C-DAC and IIT Roorkee</li>
+        <li>MATLAB and Python Programming workshop, NIT Jamshedpur</li>
+        <li>AI and ML with Data Science workshop, IISc Bangalore</li>
+        <li>Programming in Java, Elite + Gold, IIT Kharagpur</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<footer id="contact"><div class="wrap">
+  <h2>Working on something in RL or vision? Let’s talk.</h2>
+  <p>Based in Kanyakumari, India. Languages: Tamil, English, Hindi, Spanish.</p>
+  <div class="links">
+    <a href="mailto:joesfrancyreeba@gmail.com">joesfrancyreeba@gmail.com</a>
+    <a href="https://github.com/Joes017">GitHub</a>
+    <a href="https://www.linkedin.com/search/results/all/?keywords=Joes%20Francy%20Reeba%20S">LinkedIn</a>
+  </div>
+</div></footer>
+<script>
+(function(){
+  var lib=document.getElementById('library'),still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var cols=['--b1','--b2','--b3','--b4'];
+  function rnd(a,b){return a+Math.random()*(b-a)}
+  function add(cls,w,h,bg,o,dur){
+    var e=document.createElement('div');e.className='item '+cls;
+    e.style.cssText='left:'+rnd(0,96)+'%;width:'+w+'px;height:'+h+'px;--o:'+o+';--r0:'+rnd(-25,25)+'deg;--r1:'+rnd(-70,70)+'deg;animation-duration:'+dur+'s;animation-delay:-'+rnd(0,dur)+'s;'+(bg||'');
+    if(still){e.style.top=rnd(5,90)+'%'}
+    if(cls==='book'){e.style.position='absolute'}
+    lib.appendChild(e);return e;
+  }
+  for(var i=0;i<16;i++){
+    var c=cols[i%4],w=rnd(24,38),h=rnd(90,140);
+    var b=add('book',w,h,'background:var('+c+');',.34,rnd(38,66));
+    b.className='item book';
+  }
+  for(i=0;i<9;i++){add('sheet',rnd(36,54),rnd(48,70),'',.5,rnd(30,52))}
+  for(i=0;i<22;i++){var d=rnd(4,9);add('dust',d,d,'',.8,rnd(20,40))}
+})();
+</script>
+</body>
+</html>
